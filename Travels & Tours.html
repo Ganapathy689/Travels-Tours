@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travels & Tours - Sri Lanka's Sacred Sites</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --hindu: #FF6B00;
+            --buddhist: #F9A825;
+            --christian: #0A66C2;
+            --islamic: #0D8549;
+            --dark: #1A1A2E;
+            --light: #F8F8F8;
+            --primary-font: 'Poppins', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--primary-font);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1562613521-9e9a9c2b1d1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .logo span {
+            color: #FFD700;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            color: #FFD700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons .btn {
+            min-width: 180px;
+        }
+        
+        /* Religious Categories */
+        .categories {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--hindu);
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .hindu { border-top: 5px solid var(--hindu); }
+        .buddhist { border-top: 5px solid var(--buddhist); }
+        .christian { border-top: 5px solid var(--christian); }
+        .islamic { border-top: 5px solid var(--islamic); }
+        
+        .category-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-img img {
+            transform: scale(1.1);
+        }
+        
+        .category-content {
+            padding: 20px;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hindu .category-icon { color: var(--hindu); }
+        .buddhist .category-icon { color: var(--buddhist); }
+        .christian .category-icon { color: var(--christian); }
+        .islamic .category-icon { color: var(--islamic); }
+        
+        .category-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .category-content ul {
+            margin-bottom: 15px;
+        }
+        
+        .category-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .category-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--hindu);
+            font-weight: bold;
+        }
+        
+        .hindu .category-content li::before { color: var(--hindu); }
+        .buddhist .category-content li::before { color: var(--buddhist); }
+        .christian .category-content li::before { color: var(--christian); }
+        .islamic .category-content li::before { color: var(--islamic); }
+        
+        /* Featured Sites */
+        .featured-sites {
+            padding: 60px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .site-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .site-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: white;
+        }
+        
+        .hindu-site { background: var(--hindu); }
+        .buddhist-site { background: var(--buddhist); }
+        .christian-site { background: var(--christian); }
+        .islamic-site { background: var(--islamic); }
+        
+        .site-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        
+        .site-body {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .site-image {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .site-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .site-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .site-info p {
+            margin-bottom: 15px;
+        }
+        
+        .site-info .location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .site-info .location i {
+            margin-right: 10px;
+            color: var(--hindu);
+        }
+        
+        .hindu-site .location i { color: var(--hindu); }
+        .buddhist-site .location i { color: var(--buddhist); }
+        .christian-site .location i { color: var(--christian); }
+        .islamic-site .location i { color: var(--islamic); }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #FFD700;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #FFD700;
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .site-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .site-image {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Logo -->
+   
+	<header>
+    <div class="container">
+        <div class="logo">
+            <img src="7ed2af7f-0943-4c77-ad2c-8fdcc1233425.jpg" alt="Travel Logo" style="width: 100px; height: auto;">><br>
+            <span>Travel & Tours</span> 
+        </div>
+        <p class="tagline">Exploring Sri Lanka's Spiritual Heritage</p>
+    </div>
+</header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#hindu">Hindu Kovils</a></li>
+                <li><a href="#buddhist">Buddhist Temples and Stupas</a></li>
+                <li><a href="#christian">Churches</a></li>
+                <li><a href="#islamic">National Park</a></li>
+                <li><a href="#contact">Contact</a></li>
+				
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Discover Sri Lanka's sacred sites, national parks, and stupas</h1>
+            <p>"From ancient Hindu kovils and majestic Buddhist temples & stupas,to colonial - era churches,  and national parks, discover the island's rich spiritual and natural tapestry."</p>
+            <div class="cta-buttons">
+                <a href="#hindu" class="btn" style="background: var(--hindu); color: white;">Hindu Kovils</a>
+                <a href="#buddhist" class="btn" style="background: var(--buddhist); color: white;">Buddhist Temples and Stupas</a>
+                <a href="#christian" class="btn" style="background: var(--christian); color: white;">Churches</a>
+                <a href="#islamic" class="btn" style="background: var(--islamic); color: white;">National Park</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Religious Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore by spiritual and natural tapestry</h2>
+            </div>
+            
+            <div class="category-grid">
+                <!-- Hindu Kovils -->
+                <div class="category-card hindu">
+                    <div class="category-img">
+                        <img src="https://th.bing.com/th/id/OIP.0lIkRYOGIgO9C5tFJTgm-gHaEK?rs=1&pid=ImgDetMain" alt="Hindu Kovils">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-om"></i>
+                        </div>
+                        <h3>Hindu Kovils</h3>
+                        <ul>
+                            <li>Koneswaram Temple, Trincomalee</li>
+                            <li>Nallur Kandaswamy Kovil, Jaffna</li>
+                            <li>Munneswaram Temple, Chilaw</li>
+							<li>Thiruketheeswaram Temple, Mannar</li>
+							<li>Muthumariamman Temple, Matale</li>
+							<li>Seetha Amman Temple, Nuwara Eliya</li>
+							<li>Sri Ponnambala Vaneswara Temple, Colombo</li>
+							<li>Trinco Narayanan Temple, Trincomalee</li>
+							<li>kanniya Hot water Springs, Trincomalee</li>
+                        </ul>
+                        <a href="#hindu" class="btn" style="background: var(--hindu); color: white;">Explore More</a>
+                    </div>
+                </div>
+                
+                <!-- Buddhist Temples -->
+                <div class="category-card buddhist">
+                    <div class="category-img">
+                        <img src="https://cdn.pixabay.com/photo/2021/06/10/20/14/temple-6326948_640.jpg" alt="Buddhist Temples & stupas">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-dharmachakra"></i>
+                        </div>
+                        <h3>Buddhist Temples and stupas</h3>
+                        <ul>
+                            <li>Temple of the Tooth, Kandy</li>
+                            <li>Gangaramaya Temple, Colombo</li>
+                            <li>Kelaniya Raja Maha Vihara</li>
+							<li>Rangiri Dambulla Cave Temple, Dambulla</li>
+							<li>Temple of the Sacred Bodhi Tree, Anuradhapura</li>
+							<li>Isurumuniya Vihara, Anuradhapura</li>
+							<li>Ruwanwelisaya, Anuradhapura</li>
+							<li>Thuparamaya, Anuradhapura</li>
+							<li>Kantaka Chetiya, Anuradhapura</li>
+							<li>Mirisaveti, Anuradhapura</li>
+							<li>Abhayagiri, Anuradhapura</li>
+							<li>Jetavanarama, Anuradhapura</li>
+							<li>Demala Mahaseya, Polanaruwa</li>
+							<li>Rankot Vehera, Polanaruwa</li>
+							<li>Dedigama, Sabragamuwa</li>
+							<li>Yudaganawa, Monaragala</li>
+							<li>Digavapi, Ampara</li>
+                        </ul>
+                        <a href="#buddhist" class="btn" style="background: var(--buddhist); color: white;">Explore More</a>
+                    </div>
+                </div>
+                
+                <!-- Churches -->
+                <div class="category-card christian">
+                    <div class="category-img">
+                        <img src="https://www.alamy.com/aggregator-api/download?url=https://c8.alamy.com/comp/2K3GBWR/churches-in-sri-lanka-visit-sri-lanka-2K3GBWR.jpg" alt="Churches">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <h3>Churches</h3>
+                        <ul>
+                            <li>St. Anthony's Shrine, Kochchikade</li>
+                            <li>St. Lucia's Cathedral, Colombo</li>
+                            <li>Madhu Church, Mannar</li>
+							<li>St. Sebastian’s Church, Negombo</li>
+							<li>Holy Cross Church, Kalutara</li>
+							<li>St.Mary's Church, Trincomalee</li>
+							<li>St.Mary's Cathedral, Jaffna</li>
+                        </ul>
+                        <a href="#christian" class="btn" style="background: var(--christian); color: white;">Explore More</a>
+                    </div>
+                </div>
+                
+                <!-- Park -->
+                <div class="category-card islamic">
+                    <div class="category-img">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP.jpg?raw=true" alt="My-image">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3>National Park</h3>
+                        <ul>
+                            <li>Yala National Park, Southeast</li>
+                            <li>Bundala National Park, Hambantota</li>
+                            <li>Kumana National Park, Southeast</li>
+							<li>Lahugala-Kitulana National Park, Ampara</li>
+							<li>Gal Oya National Park, Uva Province</li>
+							<li>Udawalawe National Park, Sabragamuwa</li>
+							<li>Wilpattu National Park, Northwest</li>
+							<li>Kaudulla National Park, Polanaruwa</li>
+							<li>Wasgamuwa National Park, Matale</li>
+							<li>Horton Plains National Park, Matale</li>
+                        </ul>
+                        <a href="#islamic" class="btn" style="background: var(--islamic); color: white;">Explore More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Sites Section -->
+    <section class="featured-sites">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Sacred Sites</h2>
+            </div>
+            
+            <!-- Hindu Kovils -->
+            <div class="site-card" id="hindu">
+                <div class="site-header hindu-site">
+                    <div class="site-icon">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h3>Hindu Kovils</h3>
+                </div>
+                <div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(1).jpg?raw=true" alt="Koneswaram Temple">
+                    </div>
+                    <div class="site-info">
+                        <h3>Koneswaram Temple</h3>
+                        <p style="text-align: justify;">The <b>Koneswaram Temple</b>, located in <b>Trincomalee, Sri Lanka</b> is a famous Hindu temple dedicated to Lord Shiva. Perched on <b>Swami Rock</b>, it offers breathtaking views of the Indian Ocean. The temple is renowned for its <b>rich history</b>, <b>ancient legends</b>, and <b>spectacular architecture</b>, attracting pilgrims and tourists alike. It is also famous for the <b>Koneswaram festival</b>, which draws thousands of devotees. The site is believed to be one of the <b>Pancha Ishwarams</b> (five sacred Shiva temples) of Sri Lanka and is associated with the epic <b>Ramayana</b>. The nearby <b>Lover’s Leap</b> cliff adds to its mystical charm..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Trincomalee, Eastern Province
+						</div>
+						<a href="https://www.bing.com/ck/a?!&&p=b1402dd7b9f3f65077a589b96183efa7f22fd81ca5aa048885715db0b4f08e4cJmltdHM9MTc0NzE4MDgwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Koneswaram+temple&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvS29uZXN3YXJhbV9UZW1wbGU&ntb=1" class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+					</div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+						<img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(2).jpg?raw=true" alt="Nallur Temple">
+                    </div>
+                    <div class="site-info">
+						<h3>Nallur Temple</h3>
+                        <p style="text-align: justify;">The <b>Nallur Kandaswamy Temple</b>, located in Jaffna, Sri Lanka, is one of the most famous Hindu temples dedicated to Lord Murugan (Kartikeya). Known for its grand <b>Nallur Festival</b>, a 25-day celebration with vibrant processions, chariot parades, and traditional music, the temple attracts thousands of devotees and tourists. The temple's stunning <b>Dravidian-style architecture</b>, intricate carvings, and golden gopuram (tower) are iconic. Devotees also revere the temple for its sacred <b>Vel</b> (divine spear) and the powerful aura of Lord Murugan. A significant spiritual and cultural landmark, Nallur Temple remains a symbol of Tamil Hindu heritage in Sri Lanka.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Jaffna, Northern Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=b66d41eb48aa706ffdc31d5445514c8c1fd22f455732e2ab3014a327434f61f9JmltdHM9MTc0NzE4MDgwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Nallur+temple&u=a1aHR0cHM6Ly93d3cubG92ZXNyaWxhbmthLm9yZy9uYWxsdXIta2FuZGFzd2FteS10ZW1wbGUvIzp-OnRleHQ9U2l0dWF0ZWQlMjBhYm91dCUyMDNrbSUyMGZyb20lMjBKYWZmbmElMjB0b3duJTIwaXMlMjB0aGUsaHVlcyUyMGFzJTIwcGFydCUyMG9mJTIwaXRzJTIwZW50aHJhbGxpbmclMjBEcmF2aWRpYW4lMjBhcmNoaXRlY3R1cmUu&ntb=1" class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+						<img src="https://github.com/Ganapathy689/My-Images/blob/main/download.jpg?raw=true" alt="Munneswaram Temple">
+                    </div>
+                    <div class="site-info">
+						<h3>Munneswaram Temple</h3>
+                        <p style="text-align: justify;">The <b>Munneswaram Temple</b>, is a famous Hindu temple dedicated to <b>Lord Shiva</b>. It is renowned for its <b>ancient history</b>, believed to date back over a thousand years, and is one of the <b>Pancha Ishwarams</b> (five major Shiva temples) in Sri Lanka. The temple is especially famous for its <b>annual festival (Mahotsavam)</b>, which attracts thousands of devotees for rituals, processions, and fire-walking ceremonies. Another key attraction is the <b>Kali Temple</b> within the complex, dedicated to Goddess Kali. The site is also associated with the <b>Ramayana</b>, adding to its spiritual significance. Munneswaram is a major pilgrimage site for both Hindus and Buddhists in Sri Lanka..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Chilaw, North Western Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=fff9642d6f78860b4940215ed1a0ee0650607b6a127fa4b4e5b125cf97af04e2JmltdHM9MTc0NzE4MDgwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Munneswaram+temple&u=a1aHR0cHM6Ly93d3cubGFua2FwcmFkZWVwYS5jb20vMjAyMS8xMS9tdW5uZXN3YXJhbS10ZW1wbGUuaHRtbA&ntb=1" class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+                    	<img src="https://github.com/Ganapathy689/My-Images/blob/main/R.jpg?raw=true" alt="Thiruketheeswaram Temple">
+                    </div>
+					<div class="site-info">
+							<h3>Thiruketheeswaram Temple</h3>
+                        <p style="text-align: justify;">Thiruketheeswaram Temple in Mannar, Sri Lanka, boasts a history spanning at least 2,400 years, with literary and inscriptional evidence from the post-classical period supporting its ancient origins. The temple is located within the ruins of the ancient city of Manthottam, a former Hindu city and international trade center. It is one of the five recognized Shiva temples in Sri Lanka. The temple's existence predates the arrival of Vijaya in 600 B.C., with evidence suggesting it was a significant site of worship even earlier. In the 16th century, the temple was destroyed by the Portuguese, along with many other temples across the country. It was rebuilt in the early 20th century and further renovated in the 1950s. iterature and inscriptions from the post-classical period (300 BC - 1500 AD) attest to the temple's existence and importance, including contributions from kings of the Pallava, Pandyan, and Chola dynasties. The temple's location within the ancient city of Manthottam, a former trading port, provides evidence of the region's cultural and historical significance. The temple remains a place of worship for Sri Lankan Hindus, with devotees undertaking "patha yathra" (pilgrimages on foot) during Maha Shivarathiri.Key Historical Points.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Mannar, Northern Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=945e814930b8568317c4079bbedd23912dfe7e04ee77bb5ccc559ba123105ceaJmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=thiruketheeswaram+temple+sri+lanka+location&u=a1aHR0cHM6Ly93d3cubG92ZXNyaWxhbmthLm9yZy90aGlydWtldGhlZXN3YXJhbS1rb3ZpbC8&ntb=1"class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+						<img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(1).jpg?raw=true" alt="Muthumariamman Temple">
+                    </div>
+                    <div class="site-info">
+						<h3>Muthumariamman Temple</h3>
+                        <p style="text-align: justify;">The Sri Muthumariamman Temple, also referred to as Sri Muthumariamman Kovil, holds a revered position as a Hindu shrine situated in the heart of Matale town, Sri Lanka. Dedicated to Mariamman, the goddess associated with rain and fertility, this temple boasts a storied history dating back to the 19th century, embodying a symbol of cultural and religious inclusivity within the region.Tracing its origins to 1852, when a generous land donation from its owner marked the initial step towards its establishment, the Sri Muthumariamman Temple took shape in 1874 with the support of the Nattukkottai Chettiar community. Over time, it has evolved into a sacred sanctuary embraced by both Hindu and Buddhist worshippers, exemplifying the harmonious coexistence of diverse spiritual traditions in Matale..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Matala, Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=31a43698784e03a076f4e75e0b16c0e54d2d64a0fccc2607662af301b7a05019JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=muthumariamman+temple+sri+lanka+&u=a1aHR0cHM6Ly9tYWhhd2VsaS5say9zcmktbXV0aHVtYXJpYW1tYW4tdGVtcGxlLWhpbmR1LXRlbXBsZS1pbi1tYXRhbGUv&ntb=1"class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+						<img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(2).jpg?raw=true" alt="sri ponnambalam vanesar Temple">
+                    </div>
+                    <div class="site-info">
+						<h3>Sri Ponnambalam Vanesar Temple</h3>
+                        <p style="text-align: justify;">The Sri Ponnambala Vaneswara Temple in Kochchikade, Colombo, was founded in 1857 by A. Ponnambalam Mudaliyar, who sought to provide a place of worship for the Hindu community during British rule. He was inspired by a dream and purchased land to build the temple, which was consecrated in 1857. The temple was later inherited by his son, Sir Ponnambalam Ramanathan, a prominent figure in the independence movement of Sri Lanka. Ponnambalam Mudaliyar, inspired by a dream, purchased land in Kochchikade for the temple. The temple was consecrated and dedicated to Lord Shiva. The temple was inherited by one of Mudaliyar's sons, P. Coomaraswamy, and later by Sir Ponnambalam Ramanathan. A prominent figure in the Sri Lankan independence movement, he served as a Trustee of the temple and played a crucial role in its development. The temple is notable for being one of the few in Sri Lanka built entirely of granite, reflecting Indian architecture and craftsmanship. The temple is currently managed by a private trust consisting of descendants of Ponnambalam Mudaliyar and Mr. S. P. Ramanathan.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Colombo, Western Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=4df7b1327c0b70ca353e7db40eba873550e97ff9112caf54ea881c647e1e90d9JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=sri+ponnambalam+vanesar+kovil+sri+lanka+location&u=a1aHR0cHM6Ly90ZW1wbGUueWF0cmFkaGFtLm9yZy90ZW1wbGUvc3JpLXBvbm5hbWJhbGFtLXZhbmVzYXIta292aWw&ntb=1"class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+						<img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(3).jpg?raw=true" alt="seetha amman kovil ">
+                    </div>
+                    <div class="site-info">
+						<h3>Seetha Amman Temple</h3>
+                        <p style="text-align: justify;">The Seetha Amman Temple in Nuwara Eliya, Sri Lanka, is a significant site within the Ramayana trail, believed to be the location where Sita was held captive by Ravana. The temple was built in the early 2000s, but the area is thought to have been sacred long before, with the discovery of three idols in a nearby stream, including one potentially depicting Sita. The stream itself is believed to be where Sita bathed, and a nearby rock is said to be where she prayed. The temple is situated in Seetha Eliya, a location believed to be the Ashok Vatika (garden) where Sita was held by Ravana. The area is thought to have been a place of worship for a long time, as evidenced by the discovery of idols. The stream is believed to be where Sita bathed, and a nearby rock is said to be where she prayed. Some devotees believe that Hanuman, the monkey god, left footprints on a rock nearby while searching for Sita. The temple itself was built in the early 2000s, but the site's historical and religious significance predates its construction. The temple is a popular destination for both Hindus and tourists, and it plays a significant role in the Ramayana narrative. .</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Nuwara Eliya, Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=1461f342a30ff32d7531029b3275c8f524fd0ba3c24586f201841f7f819845caJmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=seetha+amman+kovil+nuwara+eliya&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VldGhhX0FtbWFuX1RlbXBsZQ&ntb=1" class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+						<img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(4).jpg?raw=true" alt="Narayanan Temple">
+                    </div>
+                    <div class="site-info">
+						<h3>Trinco Narayanan Temple</h3>
+                        <p style="text-align: justify;">The Trinco Narayanan Temple, formally known as Sri Lakshmi Narayana Perumal Kovil, is a relatively modern Hindu temple located in Trincomalee, Sri Lanka, and is not directly related to the ancient Koneswaram Temple. The Sri Lakshmi Narayana Perumal Kovil is dedicated to Lord Narayana and is located on Nilaveli Road, about 10 km from the town. It features a large compound, a beautiful hall, and idols of the 10 avatars of Lord Vishnu. This is the specific temple being referred to, a Hindu temple dedicated to Lord Narayana. It's located on Nilaveli Road, approximately 10 km from Trincomalee town. The temple has a large compound, a beautiful hall, and idols of the 10 avatars of Lord Vishnu. While the Koneswaram Temple has a rich history dating back centuries, the Sri Lakshmi Narayana Perumal Kovil is considered a more recent construction. It's likely a newer temple dedicated to a different deity, with its own distinct history. The Sri Lakshmi Narayana Perumal Kovil should not be confused with the Koneswaram Temple, which is an ancient temple complex with a long and significant history. The Koneswaram Temple was the main Hindu shrine in Trincomalee and has a complex history of construction, destruction, and restoration..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Nilaveli, Trincomalee
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=1bbc859486e4a49de4d3fbff2d5a1e1a1ce916b6d6fc656d35d86158f6653006JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Trinco+Narayanan+Temple&u=a1aHR0cHM6Ly9leHBsb3Jlc3JpbGFua2EubGsvbGFrc2htaS1uYXJheWFuYS1wZXJ1bWFsLWtvdmlsLWRlZGljYXRlZC10by10aGUtc3VwcmVtZS1wcmVzZXJ2ZXIv&ntb=1" class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+						<div class="site-image">
+						<img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(3).jpg?raw=true" alt="Hot water Springs">
+                    </div>
+                    <div class="site-info">
+						<h3>Kanniya Hot Water Springs</h3>
+                        <p style="text-align: justify;">The Kanniya Hot Water Springs in Trincomalee, Sri Lanka, are believed to be linked to the Hindu epic, the Ramayana, and the character of King Ravana. According to legend, the springs were formed when Ravana struck the earth with his sword after the death of his mother, creating the hot water wells. The site is also considered sacred by Hindus and is a popular pilgrimage location due to its proximity to the Koneswaram Temple. The story of Kanniya Hot Water Springs is deeply intertwined with the Ramayana and King Ravana. Ravana, grief-stricken after the death of his mother, is said to have struck the earth with his sword, resulting in the emergence of hot springs.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Trincomalee, North Eastern Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=d481d1b8db957e54d06b68ce238d9bae99c2003336c3af8771ead11dac4d192bJmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Kanniya+Hot+Water+Springs&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvS2Fubml5YV9Ib3RfU3ByaW5ncw&ntb=1" class="btn" style="background: var(--hindu); color: white;">Learn More</a>
+                    </div>
+					</div>
+            </div>
+            
+            <!-- Buddhist Temples -->
+            <div class="site-card" id="buddhist">
+                <div class="site-header buddhist-site">
+                    <div class="site-icon">
+                        <i class="fas fa-dharmachakra"></i>
+                    </div>
+                    <h3>Buddhist Temples and Stupas</h3>
+                </div>
+                <div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg?raw=true" alt="Temple of the Tooth">
+                    </div>
+                    <div class="site-info">
+                        <h3>Temple of the Sacred Tooth Relic</h3>
+                        <p style="text-align: justify;">The <b>Temple of the Sacred Tooth Relic (Sri Dalada Maligawa)</b> in Kandy, Sri Lanka, is one of the most sacred Buddhist sites in the world, housing the revered relic of the Buddha’s tooth. This UNESCO World Heritage Site is famous for its stunning architecture, intricate carvings, and golden-roofed shrine. The temple is central to the annual <b> Esala Perahera </b>, a grand festival featuring vibrant processions with dancers, drummers, and decorated elephants. Pilgrims and tourists visit to witness the sacred rituals and admire the temple’s spiritual and cultural significance. The relic itself is believed to grant blessings and is a symbol of Sri Lanka’s Buddhist heritage..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Kandy, Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=3834969edee49751fc2e2c9b991a49d2a6ca1bb827315c9e3a429c6298117675JmltdHM9MTc0NzE4MDgwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Temple+of+the+Sacred+Tooth+Relictemple&u=a1aHR0cHM6Ly9zcmlkYWxhZGFtYWxpZ2F3YS5say8&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					 <div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/Gangaramaya_1200x600-768x384.jpg?raw=true" alt="Gangaramaya Temple">
+                    </div>
+                    <div class="site-info">
+                        <h3>Gangaramaya Temple</h3>
+                        <p style="text-align: justify;">Gangaramaya Temple in Colombo, Sri Lanka, is one of the most famous Buddhist temples in the country, known for its stunning blend of modern and traditional architecture. The temple is renowned for its grand statue of Lord Buddha, intricate carvings, and a sacred Bodhi tree. It houses a museum with a vast collection of religious artifacts, rare coins, and antique gifts from devotees worldwide. The temple is also famous for hosting the annual **Navam Perahera**, a vibrant procession featuring dancers, drummers, and decorated elephants. A center of Buddhist learning and charity, Gangaramaya attracts both pilgrims and tourists for its spiritual significance and cultural heritage..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Colombo, Western Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=08bf00279c9cea6aee84b5874af376076c1e185d53afa6fa571281e70534574bJmltdHM9MTc0NzE4MDgwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=gangaramaya+temple&u=a1aHR0cHM6Ly9nYW5nYXJhbWF5YS5jb20vaGlzdG9yeS1hbmQtZ2FuZ2FyYW1heWEtdGVtcGxlLw&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/place-2014-09-24-12-Kelaniyarajamahavihara32d067f9c3355079a3c75d165cbc8dfe.jpg?raw=true" alt="Kelaniya Raja Maha Vihara">
+                    </div>
+                    <div class="site-info">
+                        <h3>Kelaniya Raja Maha Vihara</h3>
+                        <p style="text-align: justify;">The <b>Kelaniya Raja Maha Vihara</b> is a historic and sacred Buddhist temple near Colombo, Sri Lanka, believed to have been visited by Lord Buddha during his third visit to the island. Famous for its stunning murals and intricate sculptures, the temple showcases beautiful artwork depicting Jataka tales and Buddhist teachings. One of its most revered features is the <b>Dagaba (stupa) </b>, said to enshrine a gem-studded throne on which Buddha preached. The temple is also renowned for hosting the annual <b> Duruthu Perahera </b>, a grand procession with traditional dancers, drummers, and ornately decorated elephants. As a major pilgrimage site, Kelaniya Temple holds great religious significance and attracts devotees and tourists alike..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Kelaniya, North - East Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=6984d88de3c8f7dd5ebabb14562edd80ab785437bfe5e72cb8d6bb122e892772JmltdHM9MTc0NzE4MDgwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Kelaniya+Raja+Maha+Vihara&u=a1aHR0cHM6Ly9rZWxhbml5YXRlbXBsZS5say9oaXN0b3J5Lw&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://raw.githubusercontent.com/Ganapathy689/My-Images/refs/heads/main/big-holy-bodhi-tree-surrounded-buddhas-square-sri-lan-many-lanka-125546845.webp" alt="Temple of the Sacred Bodhi Tree">
+                    </div>
+                    <div class="site-info">
+                        <h3>Temple of the Sacred Bodhi Tree</h3>
+                        <p style="text-align: justify;">The Bodhi Tree is believed to be the oldest documented tree in the world and a significant pilgrimage site for Buddhists.Legend has it that this sacred fig tree has grown from a sapling of the Bodhi tree under which the Buddha attained enlightenment.When you arrive at the Sri Maha Bodhi, you'll be struck by the serene and spiritual atmosphere. The temple is surrounded by gardens and small temples, and you'll see many devotees offering prayers and offerings to the tree.One of the most special things about the Sri Maha Bodhi is the rituals and ceremonies that take place around the tree throughout the day. There is chanting and meditation, offerings and blessings and all kinds of other spiritual activity that you can witness, but please be respectful.As you approach the tree, you'll notice the many prayer flags and offerings that have been left there over the years. And because of its age, the tree needs some support - this is why elaborately carved and gilded support beams have been erected.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=05be78d6cb0fa4e9c549d879e1e4e4e220636d91f79e4449c1f5e9044116e5eeJmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Temple+of+the+Sacred+Bodhi+Tree&u=a1aHR0cHM6Ly90cmlweGwuY29tL2Jsb2cvamF5YS1zcmktbWFoYS1ib2RoaS8jOn46dGV4dD1KYXlhJTIwU3JpJTIwTWFoYSUyMEJvZGhpJTIwaXMlMjBhbiUyMGFuY2llbnQlMjBzYWNyZWQscGFydCUyMG9mJTIwdGhlJTIwQm9kaGklMjB0cmVlJTIwaW4lMjBJbmRpYSUyMGl0c2VsZi4&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/Rangiri_Dambulla_Cave_Temple_Photos_By_360viewlk-4-of-8-1.jpg?raw=true" alt="Rangiri Dambulla Cave Temple">
+                    </div>
+                    <div class="site-info">
+                        <h3>Rangiri Dambulla Cave Temple</h3>
+                        <p style="text-align: justify;">The <b>‘Golden Temple of Dambulla’</b> is one of the most iconic destinations to visit in Sri Lanka.Dambulla Cave Temple is a UNESCO World Heritage Site and one of the oldest cave temple complexes in Sri Lanka, dating back over 2200 years.I have written a dedicated article about this beautiful temple because we were so wowed by this temple that we spent more time that we probably would have needed to learn more about it and to some additional research..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Dambulla, Matale District
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=a2f3581b723389994beb08b74b6fecc96b732e1a4407bb5a3d3337d0b3e37b5dJmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Rangiri+Dambulla+Cave+Temple+sri+lanka+location+and+province&u=a1aHR0cHM6Ly93d3cuYXR0cmFjdGlvbnNpbnNyaWxhbmthLmNvbS90cmF2ZWwtZGlyZWN0b3J5L2RhbWJ1bGxhLXJveWFsLWNhdmUtdGVtcGxlLXJhbmdpcmktZGFtYnVsdS10ZW1wbGUv&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(5).jpg?raw=true" alt="Isurumuniya Vihara">
+                    </div>
+                    <div class="site-info">
+                        <h3>Isurumuniya Vihara</h3>
+                        <p style="text-align: justify;">Love birds beware! This might be the place for you! After all, this ancient temple dating back to the 3rd century b.c. is considered to be a symbol of the enduring power of love and devotion. How so? The legendary story of Prince Saliya and the low-caste maiden Asokamala, an important piece of Sri Lankan literature, is believed to have taken place here.On a more factual note, the Rock Temple of Anuradhapura is about 2300 years old and thus one of the oldest in Sri Lanka. The temple enshrines several important Buddhist relics, including a statue of the Buddha, as well as ancient carvings and inscriptions that depict important events from the life of the Buddha.This temple should only be a very short stop on your exploration of Anuradhapura, because the area is fairly small with only one sanctuary. You can however climb the stairs to the top of the rock to closer admire the stupa - and to have a good look at the many cave bats.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=968d76bb2c7b5ed0dbfc68362810bfcc04e973b34ba7837e1a9cbe3d3b7471e7JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Isurumuniya+Vihara+sri+lanka+location+and+province&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSXN1cnVtdW5peWE&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(6).jpg?raw=true" alt="Ruwanwelisaya">
+                    </div>
+                    <div class="site-info">
+                        <h3>Ruwanwelisaya</h3>
+                        <p style="text-align: justify;">This stupa is truly jaw dropping for its majestic size alone. It has a circumference of 951ft (290m) and stands 338ft (103m) tall, making it one of the tallest stupas in the world! But it’s not its size that makes it so important for Buddhists. The Ruwanwelisaya is said to enshrine the largest collection of Buddha relics anywhere in the world.Another impressive feature of the Ruwanwelisaya is the line up of elephant statues all around the temple grounds. The stupa actually stands on a square platform that built to look like it was carried on the back of hundreds of elephants. All around the platform, there is a sand moat with fencing - we were told this is supposed to keep some animals away, while smart and agile beings like snakes can still cross and listen to the sermons.Worship here takes place outside, there are no temple buildings at the Ruwanwelisaya.To get a better idea of its size, watch my short clip below:</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=7831b0ba34821bb972aab5d5861fed25398d484824772f16848023efd5f52fe5JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Ruwanwelisaya+sri+lanka+location+and+province&u=a1aHR0cHM6Ly93d3cuMzYwdmlldy5say9hcnRpY2xlL3J1d2Fud2VsaS1tYWhhLXNleWEtMi8&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(7).jpg?raw=true" alt="Thuparamaya">
+                    </div>
+                    <div class="site-info">
+                        <h3>Thuparamaya</h3>
+                        <p style="text-align: justify;">Thuparama, also spelt "Thuparamaya", is not a giant stupa but noteworthy as the first stupa in Anuradhapura and, most probably, the oldest one in Sri Lanka. Thuparama is situated at the northern end of the Mahavihara complex. The Mahavihara was the first monastery founded in Sri Lanka officially observing the canonically prescribed rules of consecration. Soon after, the Sinhalese king sent an envoy, Sumara, to Emperor Ashoka asking him for relics as a gift. He got the right collarbone of the Buddha, which was enshrined in the newly erected first stupa of the Sinhalese kingdom. It fell into decay several times, but was restored again and again. During the reign of King Aggabodhi II in the 7th century, 2 circular rows of columns were added to carry a roof, altering Thuparama to a Chetiyaghara, a "Stupa-House." Today's white dome is the result of a restaurationdone in 1862.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=d50c99ba25bf1644234a4c14b529e64f7b4cd39f9064bb53a8a3923e25195e75JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Thuparama+sri+lanka+location+and+province+&u=a1aHR0cHM6Ly93d3cuaGlzdG9yeWhpdC5jb20vbG9jYXRpb25zL3RodXBhcmFtYXlhLw&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(8).jpg?raw=true" alt="Kantaka Chetiya">
+                    </div>
+                    <div class="site-info">
+                        <h3>Kantaka Chetiya</h3>
+                        <p style="text-align: justify;">The best preserved original stupa architecture of Sri Lanka can be seen in Mihintale. The Kantaka Chetiya is one of the first stupas erected in Sri Lanka, presumably already in the 3rd century B.C.E., when Buddhism was introduced in the Sinhalese kingdom. Epigraphic evidence attributes a restoration of this stupa to King Lanja Tissa (Lajitissa), who reigned from 119 till 109 B.C.E. The lower levels of the Kantaka Chetiya are in such a good state of preservation due to the fact that this stupa had been covered by soil for centuried, before it was excavated in 1934. It’s 12 m high now. Originally, the dome had a height of 30 m. The diameter is 41 m. The most remarkable feature are the four frontispieces. Such Vahalkadas placed in front of the dome at the cardinal points are typical for Sinhalese stupas. They are elaborately sculptured with earliest examples of Gana dwarfs in different actions and with animals.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=6984d88de3c8f7dd5ebabb14562edd80ab785437bfe5e72cb8d6bb122e892772JmltdHM9MTc0NzE4MDgwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Kelaniya+Raja+Maha+Vihara&u=a1aHR0cHM6Ly9rZWxhbml5YXRlbXBsZS5say9oaXN0b3J5Lw&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(9).jpg?raw=true" alt="Mirisaveti">
+                    </div>
+                    <div class="site-info">
+                        <h3>Mirisaveti</h3>
+                        <p style="text-align: justify;">Mirisaveti, also spelt "Mirisawetiya" is  a stupa situated between two ancient tanks at the western side of Anuradhapura. Mirisaveti was the first giant stupa erected in Sri Lanka and the first major construction project of the Sinhalese national hero, King Duttha Gamani (Dutugemunu), who defeated the Tamil King Elara, who had previously ruled in Anuradhapura, When Dutthagamani took a bath in the nearby reservoir called Tissawewa, he left his weapon, the royal lance, behind him. The lance was a sacred weapon. The Buddhist Sangha had once encouraged Dutthagamani to free Anuradhapura from non-Buddhist rule and endowed an original Buddha relic, which was kept in the royal lance. When Dutthagamni now came back from his bath, he found himself unable to move the lance from the place, where he had left it. So he understood: This was the place the relic had chosen to be buried under a giant stupa. </P>
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=2389e04c48fb78f28be274b43babdcabe9d27cce14f422b9c617950023920e93JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Mirisaveti+sri+lanka+location+and+province+&u=a1aHR0cHM6Ly93d3cubGFua2F0cmF2ZWxkaXJlY3RvcnkuY29tL3BsYWNlcy9ub3J0aC1jZW50cmFsLXByb3ZpbmNlL2FudXJhZGhhcHVyYS1kaXN0cmljdC9yZWxpZ2lvdXMvbWlyaXNhdmV0aS1zdHVwYS8&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(10).jpg?raw=true" alt="Abhayagiri">
+                    </div>
+                    <div class="site-info">
+                        <h3>Abhayagiri</h3>
+                        <p style="text-align: justify;">The Abhayagiri Dagoba is the centre of the monastery of the same name in Anuradhapura. It was founded by King Vattagamani Abhaya, known as Valagamba in Sinhala, one of the island's most significant Buddhist kings.  The Abhayagiri Dagoba surpassed the giant stupa of the rivalling Mahavihara monastery, Ruwanweliseya. The diameter of the Abhayagiri stupa is 150 m, total height is 115 m. Abhayagiri Vihara is the largest ancient monastic complex in Sri Lanka and a focal point of the UNESCO sponsored excavation and development project called "Cultural Triangle". The Abhagiri monastery welcomed Mahayanist traditions and was a pioneer in the development of the island's art. The decorations at the four frontispieces (Vahalkadas) of this giant stupa are regarded as the best examples of this typical sculptural decoration, besides those at the Kantaka Chetiya in Mihintale.  </p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=341e97aa5a2838bd844b6c396d4f090610e46460fa584c36fdabc1bf7d776755JmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Abhayagiri+sri+lanka+location+and+province+&u=a1aHR0cHM6Ly9tYXBjYXJ0YS5jb20vVzI3ODg2NTE1Mg&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(4).jpg?raw=true" alt="Jetavanarama">
+                    </div>
+                    <div class="site-info">
+                        <h3>Jetavanarama</h3>
+                        <p style="text-align: justify;">As already mentioned, the Jetavanarama Dagoba is the largest ancient stupa dome at all. It was scientifically restored in the beginning of our century. The giant stupa forms the centrepiece of the systematically planned Jetavanarama monastery. This monastery is a result of a shism of the Mahavihara monastery. Indeed, the Jetavanarama stupa is erected on former temple land of the Mahavihara. Using the consecrated area for other projects without the consent of the monastery is actually a sacrilege in Buddhism. King Mahasena, who promoted the newly established Jetavanarama monastery at the end of the 3rd century C.E., is therefore considered as a heretic in the ancient chronicles. Nevertheless, the Jetavanarama remained to be one of the three major Buddhist orders of the Sinhalese island nation in the subsequent seven centuries of the Anuradhapura period.  </p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=411bffbcd22814d42a7f7ef412f3678e2ac7d17e0b58db51478f3c9505d83f0dJmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Jetavanarama+sri+lanka+location+and+province+&u=a1aHR0cHM6Ly93d3cubGFua2F0b3VyZXhwZXJ0cy5jb20vamV0YXZhbmFyYW1heWEtc3R1cGEtYW51cmFkaGFwdXJhLw&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(11).jpg?raw=true" alt="Demala Mahaseya">
+                    </div>
+                    <div class="site-info">
+                        <h3>Demala Mahaseya</h3>
+                        <p style="text-align: justify;">Actually, the Demala Mahaseya might derive its name from the term “Demahal”. which can mean "two-storey". The large dagoba was flat, compared to the almost hemispherical domes of the much earlier giant stupas in Anuradhapura. But this is probably the result of a new form of stupas developed in the Polonnaruwa period, particularly during the reign of King Parakramabahu I. This form is "two-storey" indeed. The wide dome is cut in height, but in the centre of the elevated platform atop this wide lower dome is a second stupa of a much smaller diameter, forming the second storey of the entire stupa building. This new form of giant stupas cannot be recognized easily at the overgrown Demala Mahaseya, but it is nevertheless present in Polonnaruwa, only on a smaller scale.  The Pabulu Vehera close to the centre of Sri Lanka's medieval capital shows this unusual "two-storey" form. </p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Anuradhapura, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=fca07ac5bf2df374e8a4488fe823f75bf80ce9e0da02a0d469fd874a119a183fJmltdHM9MTc0ODIxNzYwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Demala+Mahaseya+sri+lanka+location+and+province+&u=a1aHR0cHM6Ly9tYXBjYXJ0YS5jb20vVzMzNzQ4MjU3NQ&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/rankot-vehera-or-the-gold-pinnacled-stupa-the-ancient-city-of-polonnaruwa-A2EX8T.jpg?raw=true" alt="Rankot Vehera">
+                    </div>
+                    <div class="site-info">
+                        <h3>Rankot Vehera</h3>
+                        <p style="text-align: justify;">Though a new form of stupas emerged in this period, there is nevertheless an example of the classic hemispherical style of Sinhalese stupas in Polonnaruwa, too. Though not as huge as the three largest dagobas of Anuradhapura, the Rankot Vehera near Polonnaruwa's main monastic complex, Alahena Pirivena, is still of an impressive size. The Rankot Vehera is the landmark giant stupa of Polonnaruwa. It was constructed in the late 12th century by King Nissanka Malla, who was eager to surpass his predecessors in Polonnaruwa, at least in quantities of inscriptions, donations and building activities. Not only the form resembles that of Anuradhapura's giant stupas. In fact, a stone inscription situated close to the stupa identifies it by the name "Ruwanweli".  The diameter at the base is  slightly more than 60 m, the total height is 55 m. The name "Rankot" means "golden pinnacle". </p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Polonnaruwa, North - Central Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=30cb29739f314852243b1f1f3b7627e2fde3a01b25f71ac8fe0d844116519701JmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Rankot+Vehera+sri+lanka+location+and+province+&u=a1aHR0cHM6Ly93d3cubGFua2F0cmF2ZWxkaXJlY3RvcnkuY29tL3BsYWNlcy9ub3J0aC1jZW50cmFsLXByb3ZpbmNlL3BvbG9ubmFydXdhLWRpc3RyaWN0L3JlbGlnaW91cy9yYW5rb3RoLXZlaGVyYS8&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/yudaganawa-dagaba-900_orig.jpg?raw=true" alt="Dedigama">
+                    </div>
+                    <div class="site-info">
+                        <h3>Dedigama</h3>
+                        <p style="text-align: justify;">Dedigama in the western foothills of Sri Lanka's central highlands  is the birthplace of King Parakramabahu the Great. The chronicles mention that he erected a giant stupa at the location of the house in which he was born. It is quite sure, that this stupa is that of Dedigama. The 78 m wide giant stupa  is also known as "Kotavehera". Literally, this means "short stupa". It may refer to the shape of this stupa. It seems to be cut at half of a dome's height. It is not entirely clear, whether the Dedigama stupa remained unfinished or if this was intentionally chosen, corresponding with the new type of stupas developed in Polonnaruwa. Though rarely visited, Dedigama is an exciting stupa, because the relic chambers were untouched. The excavation was one of the most fascinating in Sri Lankas archaeology. Many of the findings, some of them golden or gilded statues, are exhibeted in a museum just 100 m away from the stupa.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Kegalle, Sabragamuwa Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=06192a5769855e2f19ef04a2f7845ad30069c0889179dc3abae4770d5cc173a0JmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Dedigama+sri+lanka+location+and+province+%26+history&u=a1aHR0cHM6Ly9leHBsb3JlZGlhc2wuY29tL2RlZGlnYW1hLWtvdGF2ZWhlcmEv&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(5).jpg?raw=true" alt="Yudaganawa">
+                    </div>
+                    <div class="site-info">
+                        <h3>Yudaganava Rajamaha Viharaya</h3>
+                        <p style="text-align: justify;">The Yudaganawa dagoba is the largest stupa in southern Sri Lanka. It is said to be at the site of a battle between Dutthagamani and his brother in a war of succession. This battle took place in the 2nd century B.C.E. It is possible that a first stupa was built here during Anuradhapura period. But is highly unlikely that the stupa which can be seen today is from this early period. There are many different datings. But most probably the giant stupa in Yudaganawa, 95 m wide and in the "two-story" shape, is from the reign of Parakramabahu I, the famous Polonnaruwa king. Like Dedigama marks his father's hometown, Yudaganawa is believed to be his mother's hometown. Erecting stupas in Polonnaruwa and in the west in Dedigama and in the south in Yudaganawa symbolizes the unification of all parts of the island under Parakramabahu, Rajarata, Dakkhinadesa und Rohana respectively.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>  Buttala, Uva province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=9acd91f1238611a5ce658b40b0aeb157e89100cdaea643e07221706fb1fb2c16JmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Yudaganawa+sri+lanka+location+and+province+%26+history&u=a1aHR0cHM6Ly93d3cubGFua2FwcmFkZWVwYS5jb20vMjAyMS8wMi95dWRhZ2FuYXdhLmh0bWw&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(12).jpg?raw=true" alt="Digavapi">
+                    </div>
+                    <div class="site-info">
+                        <h3>Digavapi</h3>
+                        <p style="text-align: justify;">Digavapi is the only giant stupa in Sri Lanka's Eastern Province. The diameter at the base is about 90 m. This is all the more impressive as it could have been a full-sized dome. In this case, the Digavapi stupa would have been much bigger than the Yudaganwa stupa. The Digavapi stupa is usually attributed to King Saddha Tissa, Dutthagamani's brother, who had been the local ruler in the east before becoming Dutthagamani's successor in Anuradhapura. In this case, the giant stupa of Digavapi would be drom the same period as the Ruwanweliseya, this is the 2nd century B.C.E. More likely, it was enlarged in later centuries. According to the chronicles, Digavapi is one of the places visited by the Buddha, a so-called "Solosmasthana" site, one od the 16 most sanctified places in Sri Lanka. Since restoration works in the 1920s, Digavapi has become an important pilgrimage site again.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Ampara, Eastern Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=b9502cb4acc19b091d5de2956e560208bc99eb5dbb91f4d3c1b3b30c8fe66e4bJmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Digavapi+sri+lanka+location+and+province+%26+history&u=a1aHR0cHM6Ly93d3cubGFua2FwcmFkZWVwYS5jb20vMjAxOS8wMy9kaWdoYXZhcGktdmloYXJheWEuaHRtbA&ntb=1" class="btn" style="background: var(--buddhist); color: white;">Learn More</a>
+                    </div>
+					</div>
+                </div>
+           
+            
+            <!-- Churches -->
+            <div class="site-card" id="christian">
+                <div class="site-header christian-site">
+                    <div class="site-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3>Churches</h3>
+                </div>
+                <div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/magnificent.jpg?raw=true" alt="St. Anthony's Shrine">
+                    </div>
+                    <div class="site-info">
+                        <h3>St. Anthony's Shrine</h3>
+                        <p style="text-align: justify;">St. Anthony's Shrine Church is one of Sri Lanka's most famous Catholic pilgrimage sites. Dedicated to St. Anthony of Padua, the church is renowned for its miraculous healings and answered prayers, attracting thousands of devotees annually. The shrine is particularly famous for its grand feast held every June 13th, featuring vibrant processions, prayers, and cultural celebrations. The church's stunning Gothic architecture, serene atmosphere, and the revered statue of St. Anthony make it a significant spiritual and tourist landmark in Sri Lanka. Many believers visit seeking blessings, especially for lost causes and healing, reinforcing its reputation as a sacred place of faith and miracles..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Kochchikade, Colombo
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=dd4a7cfdd863e5e45074ce88cd6531753f6b6fdb2a63c1f782f38e90309c6722JmltdHM9MTc0NzI2NzIwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=st.+anthony%27s+shrine+sri+lanka&u=a1aHR0cHM6Ly93d3cudW5pcXVlc3JpbGFua2EuY29tL2hlcml0YWdlL3N0Li1hbnRob255J3Mtc2hyaW5lIzp-OnRleHQ9U3QuJTIwQW50aG9ueSUyN3MlMjBTaHJpbmUlMjBpcyUyMGElMjBSb21hbiUyMENhdGhvbGljJTIwY2h1cmNoLGlzJTIwZGVzaWduYXRlZCUyMGElMjBuYXRpb25hbCUyMHNocmluZSUyMGFuZCUyMG1pbm9yJTIwYmFzaWxpY2Eu&ntb=1" class="btn" style="background: var(--christian); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/image.jpg?raw=true" alt="St. Lucia's Cathedral">
+                    </div>
+                    <div class="site-info">
+                        <h3>St. Lucia's Cathedral</h3>
+                        <p style="text-align: justify;">St. Lucia's Cathedral sis one of the country's most famous and historic Roman Catholic churches. Known for its stunning Gothic architecture, the cathedral features grand arches, intricate stained-glass windows, and a majestic bell tower. A major pilgrimage site, it is dedicated to St. Lucy, the patron saint of the blind, and attracts devotees seeking blessings. The cathedral is also renowned for its annual feast in December, celebrated with grand processions and vibrant festivities. Its serene ambiance and spiritual significance make it a must-visit landmark in Sri Lanka..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>  Kotahena, Colombo
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=682428d71bccefdef69515f84debe9e9cd7e03b9e4b4b0a2ee7b1ab67ebbc915JmltdHM9MTc0NzI2NzIwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=St.+Lucia%27s+Cathedral%2c+Colombo&u=a1aHR0cHM6Ly9zdC1sdWNpYXMtY2F0aGVkcmFsLWNvbG9tYm8ub3JnLw&ntb=1" class="btn" style="background: var(--christian); color: white;">Learn More</a>
+                    </div>
+				</div>
+					<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/DSCF9927.jpg?raw=true" alt="Madhu Church">
+                    </div>
+                    <div class="site-info">
+                        <h3>Madhu Church</h3>
+                        <p style="text-align: justify;">The <b>Madhu Church</b> (Our Lady of Madhu Shrine) in Sri Lanka is a famous Roman Catholic pilgrimage site located in the Mannar District. Known for its revered <b>statue of Our Lady of Madhu</b>, the church attracts thousands of devotees, especially during the annual <b>Madhu Feast</b> in August. The shrine is also famous for its <b>miraculous healing powers</b> and its historical significance as a place of refuge during the civil war. Surrounded by serene forests, the church offers a peaceful spiritual retreat. The <b>sacred Madhu soil</b> (Manalayam) is believed to have healing properties, making it a key devotional item for pilgrims..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>  Mannar, Northern province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=fb9c6fbb76967e314a8b328429f976e537214c78ede986cbda6596fdd50de536JmltdHM9MTc0NzI2NzIwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Madhu+Church%2c+Mannar&u=a1aHR0cHM6Ly9hbWF6aW5nbGFua2EuY29tL3dwL21hZGh1LWNodXJjaC8&ntb=1" class="btn" style="background: var(--christian); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(6).jpg?raw=true" alt="St. Sebastian’s Church">
+                    </div>
+                    <div class="site-info">
+                        <h3>St. Sebastian’s Church</h3>
+                        <p style="text-align: justify;">A Roman Catholic Church designed in the Gothic Revival fashion, St. Sebastian’s Church was commissioned after Reims Cathedral in France. It took ten years for this church in Sri Lanka to be built in 1946. It annually celberates a festival on 20th of January which results in a procession and free food for poor people.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>  Negombo, Western Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=b7ddceb01e8b381292bcd066632a0cb6a48fc786e1a7e02bee100eb04ddba0acJmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=St.+Sebastian%e2%80%99s+Church%2c+Negombo+sri+lanka+location+and+province+%26+history&u=a1aHR0cHM6Ly9zcmlsYW5rYXRyYXZlbHBhZ2VzLmNvbS9saXN0aW5nL3N0LXNlYmFzdGlhbnMtY2h1cmNoLW5lZ29tYm8v&ntb=1" class="btn" style="background: var(--christian); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(13).jpg?raw=true" alt="Holy Cross Church<">
+                    </div>
+                    <div class="site-info">
+                        <h3> Holy Cross Church</h3>
+                        <p style="text-align: justify;">Holy Cross Church in Kalutara stands on an elevated area overlooking the ocean with some extraordinary coastal views. Owing to its excellent location and overall aestheticism that is evident in the intricate designs and statue of the Virgin Mary, this church in Sri Lanka has become a popular venue for weddings.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Kalutara, Western Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=0beb881026efdefe0ef0daba238abc61e38e77f0ffd057fde2fb3421889d2b76JmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=Holy+Cross+Church%2c+Kalutara+sri+lanka+location+and+province+%26+history&u=a1aHR0cHM6Ly93d3cuc3JpbGFua2EtcGxhY2VzLmNvbS9wbGFjZXMvaG9seS1jcm9zcy1jaHVyY2gta2FsdXRhcmE&ntb=1" class="btn" style="background: var(--christian); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/sri-lanka-trincomalee-st-marys-catholic-cathedral-FW941R.jpg?raw=true" alt="St. Mary's Church">
+                    </div>
+                    <div class="site-info">
+                        <h3>St. Mary's Church</h3>
+                        <p style="text-align: justify;">A beautiful church from the 1852, St. Mary's Church in Trincomalee is claassically done in white with blue margins that give it an ethereal taste.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>  Trincomalee, Eastern Province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=e9898ce53d28c05c8b8d79b52a8518ebb90e58253061ac8c44c530ba25c97995JmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=St.Mary%27s+Church%2c+Trincomalee+sri+lanka+location+and+province+%26+history&u=a1aHR0cHM6Ly93d3cubG92ZXNyaWxhbmthLm9yZy9zdC1tYXJ5cy1jYXRoZWRyYWwv&ntb=1" class="btn" style="background: var(--christian); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(14).jpg?raw=true" alt="St. Mary’s Cathedral">
+                    </div>
+                    <div class="site-info">
+                        <h3> St. Mary’s Cathedral</h3>
+                        <p style="text-align: justify;">Known locally as Periye Kovil for being surprisingly large and its Dutch-inspired architecture, St. Mary's Cathedral in Gurunagar of Jaffna is said to be more than 250 years old. According to local folklore, this church in Sri Lanka was built on the ashes of King Cankili's son, who was killed by the King himself because he converted to Christianity.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>  Jaffna, Northern province
+                        </div>
+                        <a href="https://www.bing.com/ck/a?!&&p=d26e5e8f53ad21c19f090a330cdcce32fc2246d2d88a344f3203219684a55707JmltdHM9MTc0ODMwNDAwMA&ptn=3&ver=2&hsh=4&fclid=2891909c-7032-6cee-1902-853471336d8b&psq=St.Mary%27s+Church%2c+Jaffna+sri+lanka+location+and+province+%26+history&u=a1aHR0cHM6Ly9tYXBjYXJ0YS5jb20vVzU3MzExNzAyNQ&ntb=1" class="btn" style="background: var(--christian); color: white;">Learn More</a>
+                    </div>
+                </div>
+			</div>
+            
+            <!-- Mosques -->
+            <div class="site-card" id="islamic">
+                <div class="site-header islamic-site">
+                    <div class="site-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>National Park</h3>
+                </div>
+                <div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/The+Common+Wanderer-8796-2.jpg?raw=true" alt="Yala National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Yala National Park</h3>
+                        <p style="text-align: justify;">Yala, of course, is  Sri Lanka’s most famous national park, and it's the most beautiful, diversified and exciting one on the island. Yala National Park consists of 5 blocks. The most visited area of Yala National Park is Block 1 in the southernmost part of Yala. Leopards can often be observed here sleeping on rock boulders or trees. But Yala block 1 is often crowded with jeeps of day-trippers. Real wildlife enthusiasts will take two or more days to explore the less well-known parts of Yala and to enjoy a moonlight safari, too. Blocks 3, 4 and 5 are situated north of Yala and covered with a thicket of shrubland, offering less observation opportunities. The rarely visited Block 2, stretching along the shore between block 1 and adjacent Yala-East/Kumana National Park has large areas of of open grassland, making block 2 an ideal place to observe wild animals. Entering Yala Block 2 requires special permission. More about Yala.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Southeastern Province
+                        </div>
+                        <a href="https://www.globalnationalparks.com/sri-lanka/yala/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(15).jpg?raw=true" alt="Bundala National Park<">
+                    </div>
+                    <div class="site-info">
+                        <h3>Bundala National Park</h3>
+                        <p style="text-align: justify;">Bundala National Park, the former bird sanctury, is covering an area of 6,200 hectares at Sri Lanka's south coast between Yala National Park and Hambantota. Due to its lakes and lagoons filled with brackish water, Bundala is a paradise for water birds. All aquatic bird species native to Sri Lanka occur in Bundala. Bundala National Park is famous for Sri Lanka's largest colonies of migratory Greater flamingos (Phoenicopterus roseus) in particular. Bundala is serves as a favourite wintering ground for many birds from northern Asia and the Himalayas. Altogether 197 bird species have been detected in Bundala. Furthermore, 324 species of vertebrates occur in Bundala National Park. Besides Yala. Bundala is the national park with best chances to observe both  crocodile species of the island on the same day, viz saltwater crocodiles in the lagoons and mugger crocodiles in the freshwater lakes. More about Bundala.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Hambantota, Southern Province
+                        </div>
+                        <a href="https://www.uniquesrilanka.com/heritage/bundala-national-park" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(16).jpg?raw=true" alt="KKumana National Park"> 
+                    </div>
+                    <div class="site-info">
+                        <h3>Kumana National Park</h3>
+                        <p style="text-align: justify;">Kumana National Park is also known as "Yala East". Kumana is Sri Lanka’s national park for birdwatchers in particular. It has the highest number of bird species, The reason for this abundance in birdlife are the many lakes and lagoons of Kumana National Park, the latter being called Kalapuwas. Combinations of small lagoon brack waters and bracky swamps and ancient freshwater tanks are ideal habitats for aquatic birds. Still existing ancient tanks contribute to e abundant birdlife in Kumana. 225 breeding and migratory bird species occur in this Kumana National park. There are more lakes and less rocks in Kumana than in the adjacent Yala National Park, but all in all, the sceneries are quite similar. Because it is much less frequented than Yala, Kumana is still an insider tip for natur lovers. The classical 3-day safari from Yala block 1 is crossing Yala block 2 and to a camp in Kumana. More about Kumana.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Ampara, Eastern Province
+                        </div>
+                        <a href="https://amazinglanka.com/wp/kumana-national-park/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(17).jpg?raw=true" alt="Lahugala-Kitulana National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Lahugala-Kitulana National Park</h3>
+                        <p style="text-align: justify;">Lahugala-Kitulana is a very small National Park situated 15 km west of the east coast city Pottuvil.  Lahugala is part of Sri Lanka's southern elephant corridor, crossed by wild elephants when migrating from Yala/Kumana to the large Lake Senanayake in the dry season. Thus northern hemisphere summer months are the best period to visit this national park, then up to 150 individuals gather here, because Lahugala-Kitulana has four natural lakes and plenty of tall Beru grass, which is the elphant's favourite food. Wild elephants can easily be observed at the Mahawewa lake, which is close to mainroad A4, which crosses the entire length of the park. This way, travellers don't need to take part in a safari expedition. Lahugala is also interesting for heritage tourists, as it includes the ancient Magul Maha Vihara. South Sri Lanka's only moonstone rich in details was found here. More about Lahugala.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Eastern Province
+                        </div>
+                        <a href="https://nationalparksassociation.org/sri-lanka-national-parks/lahugala-kitulana-national-park/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(18).jpg?raw=true" alt="Gal Oya National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Gal Oya National Park</h3>
+                        <p style="text-align: justify;">Gal Oya is a river originating in Uva and crossing the Ampara District. As part of an irrigation scheme started in 1950, the river was dammed at Inginiyagala. The new reservoir, Senanayake Samudra, is named the first Prime Minister of Ceylon after independence. The largest lake in Sri Lanka became the core of the Gal Oya National Park.  The scenic lake is spotted with islands and has many coves. More than 150 bird species occur in this area. Raptors such as Sri Lanka’s largest eagles, White-bellied Sea Eagle and Grey-headed Fish Eagle, can often be sighted here. The office of the Gal Oya Park is just below the Inginiyagala dam. Boat safaris start at the dam, they should be booked one day in advance to ensure guides will available. The best time to observe elephants gathering in the evening is the dry period between July and September. Some of them can be seen swimming to the small islands. More about Gal Oya.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Uva Province
+                        </div>
+                        <a href="https://amazinglanka.com/wp/gal-oya-national-park/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(7).jpg?raw=true" alt="Udawalawe National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Udawalawe National Park</h3>
+                        <p style="text-align: justify;">Udawalawe National Park was created to provide a sanctuary for wild elephants which had been displaced by the construction of the Udawalawe reservoir. Approximately 700 wild elephants live in Udawalawe National Park, on circa 30,000 hectares.  Visitors can see elephants  in small herds of half a dozen or a dozen females and babies and juvenile males. Groups of adult male elephants are smaller, old tuskers are often solitary. Attached to Udawalawe National Park is the Elephant Transit Home, supported by the international "Born Free Foundation". Feeding times are 9 am, 12 noon, 3 pm and 6 pm. This Elephant Orphanage's aim, in contrast to Pinnawela, is to return the elephants to the wild. Besides elephants, 42 other mammal species, 21 fish species, 12 amphibian species and 33 reptile species, 184 bird species and, among other invertebrates, 135 species of butterflies have been recorded in Udawalawe National Park. More about Udawalawe.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Sabragamuwa & Uva Province
+                        </div>
+                        <a href="https://www.globalnationalparks.com/sri-lanka/udawalawe/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(8).jpg?raw=true" alt="Wilpattu National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Wilpattu National Park</h3>
+                        <p style="text-align: justify;">Wilpattu Park, situated between Anuradhapura, Puttalam and Mannar, is Sri Lanka's largest national park. The density of leopards and maybe also of sloth bears is even higher than in Yala. Indeed the leopard density in Wilpattu is the highest in the entire world. But to be honest, the chances to sight these amazing animals are slightly lesser than in Yala, because there are not as many open grassland and rock boulders in Wilpattu, compared to Yala. "Wilpattu" is dericed from "Villu", which is the Sinhalese name of small freshwater lakes in depressions collecting surface run-off water. Villus are the characterizing the very core of Wilpattu National Park. They are major feeding grounds for migrating aquatic birds and indispensible waterholes for mammals during the dry season. The best time to visit Wilpattu is from February till August, July is the peak of the "sloth bear observation season". More about Wilpattu.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>  North West and North Central provinces
+                        </div>
+                        <a href="https://srilankayo.lk/wilpattu-national-park-sri-lanka/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(19).jpg?raw=true" alt="Kaudulla National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Kaudulla National Park</h3>
+                        <p style="text-align: justify;">Kaudulla National Park at the historical tank of the same name is located not far from Minneriya National Park, at the morthern side of the Anuradhapura-Habarana-Polonnaruwa main road A11. Kaudulla is part of the largest bird area in Sri Lanka’s dry zone belongs to the island’s most important elephant corridor, too. Sri Lanka’s famous "elephant gathering" taking place at Minneriya tank during summer months shifts to Kaudulla in October. The best period to visit Kaudulla then lasts till December. The best time of the day to observe big herds is the evening. Kaudulla National Park is home to 24 mammal species, 25 reptile species, 26 fish species, and 160 bird species. Kaudulla is one of the sites where the extremely rare Gray Slender Loris was sighted and Sri Lanka’s only national park where an albino Chital has been sighted. Jeep safaris start from Habarana or Sigiriya or Giritale. More about Kaudulla.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Colombo
+                        </div>
+                        <a href="https://sltraveler.com/kaudulla-national-park/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/OIP%20(20).jpg?raw=true" alt="Wasgamuwa National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Wasgamuwa National Park</h3>
+                        <p style="text-align: justify;">Wasgamuwa is a rarely visited national park situated just south of Polonnaruwa. Only few tourists know that herds of wild elephants can be seen at the southern shore of the Polonnaruwa's lake Topa Wewa, with herds of almost equal size as in Minneriya National Park's famous "Elephant Gathering". But the large herds in Wasgamuwa gather in a different season, from November till May.  The elephant herds cannot be seen from Polonnaruwa, but it's possible to observe them on a boat tour starting there. Originally a nature reserve since 1938,  Wasgamuwa was declared national park to offer a refuge for those wild animals that were displaced due to the Mahaweli River development project in 1984. Wasgamuwa is also one of the important bird areas along Sri Lanka's largest river. The name of Wasgamuwa is derived from "Walasa", meaning "sloth bear", and "Gamuwa",  meaning "wood"..</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Matala & Polonnaruwa District
+                        </div>
+                        <a href="https://amazinglanka.com/wp/wasgamuwa-national-park/" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+				<div class="site-body">
+                    <div class="site-image">
+                        <img src="https://github.com/Ganapathy689/My-Images/blob/main/R%20(9).jpg?raw=true" alt="Horton Plains National Park">
+                    </div>
+                    <div class="site-info">
+                        <h3>Horton Plains National Park</h3>
+                        <p style="text-align: justify;">Horton Plains National Park, part of the World Heritage Site "Central Highlands", is a plateau at a height 2000 m above sea level. The Sinhalese name “Maha Eliya” (“great clearing”) refers to the open grassland lightnings enclosed by montane rain forest. Horton Plains is Sri Lanka’s only National Park where visitors arepermitted to walk alone on designated trails. Chances to observe Sambar deer and Purple-faced Langurs are high.Horton Plains is home to an endemic subspecies of slender loris (Loris tardigradus nycticeboides), discovered in 1937, but believed to be extinct until 2002, when it was rediscovered. In 2009, one individual could be captured. The slender loris is one of five most-threatened primates in the world. The park is popular with bird watchers, too. Yellow-Eared Bulbul, Dull-Blue Flycatcher, Sri Lanka Bush Warbler, Sri Lanka Whistling Thrush are endemic to Sri Lanka’s highlands. More about Horton Plains.</p>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i> Nuwara Eliya District
+                        </div>
+                        <a href="https://www.srilankaview.com/horton_plains.htm" class="btn" style="background: var(--islamic); color: white;">Learn More</a>
+                    </div>
+                </div>
+			</div>
+   
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3> Travels & Tours</h3>
+                    <p>Your guide to Sri Lanka's sacred sites and spiritual heritage.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#hindu">Hindu Kovils</a></li>
+                        <li><a href="#buddhist">Buddhist Temples and Stupas</a></li>
+                        <li><a href="#christian">Churches</a></li>
+                        <li><a href="#islamic">National Park</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Trincomalee, Sri Lanka</li>
+                        <li><i class="fas fa-phone"></i> +94 771324245</li>
+                        <li><i class="fas fa-envelope"></i> mahendranjtl13@gmail.com
+</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TL Travels. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
